@@ -1,0 +1,29 @@
+name: timer
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  audioplayers: ^6.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.10.0  # Переместил в dev_dependencies
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/sounds/signal.mp3
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/timer.png"  # Путь к вашей иконке
+
