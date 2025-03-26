@@ -1,31 +1,28 @@
-buildscript {
-    ext.kotlin_version = '1.7.10'
-    repositories {
-        google()
-        mavenCentral()
+plugins {
+    id 'com.android.application' version '7.0.0' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.10' apply false
+    id 'io.flutter' apply false // Не указывайте явную версию
+}
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.example.myapp"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
     }
 
-    dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    buildTypes {
+        release {
+            // В случае с реальной подписью используйте реальные настройки
+            signingConfig signingConfigs.debug  // Это для отладки, для релиза нужно указать вашу подпись
+        }
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-rootProject.buildDir = '../build'
-subprojects {
-    project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
-    project.evaluationDependsOn(':app')
-}
-
-tasks.register("clean", Delete) {
-    delete rootProject.buildDir
+flutter {
+    source '/Users/user/Desktop/my_flutter/Timer' // Путь должен быть к корневой директории проекта Flutter
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:timer/src/my_app.dart';
-
-void main() {
-  runApp( const MyApp());
+import 'package:timer/src/navigation_bar.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp4());
 }
 

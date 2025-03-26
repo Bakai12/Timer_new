@@ -1,3 +1,16 @@
+pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+        mavenCentral()
+    }
+    plugins {
+        id 'com.android.application' version '7.0.0' apply false
+        id 'org.jetbrains.kotlin.android' version '1.8.10' apply false
+        // id для flutter удаляется, так как он автоматически настраивается
+    }
+}
+
 include ':app'
 
 def localPropertiesFile = new File(rootProject.projectDir, "local.properties")
@@ -8,4 +21,6 @@ localPropertiesFile.withReader("UTF-8") { reader -> properties.load(reader) }
 
 def flutterSdkPath = properties.getProperty("flutter.sdk")
 assert flutterSdkPath != null, "flutter.sdk not set in local.properties"
-apply from: "$flutterSdkPath/packages/flutter_tools/gradle/app_plugin_loader.gradle"
+
+// Здесь нужно подключить плагин Flutter
+apply from: "$flutterSdkPath/packages/flutter_tools/gradle/flutter.gradle"
